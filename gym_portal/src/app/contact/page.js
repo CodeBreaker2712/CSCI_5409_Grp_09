@@ -17,7 +17,7 @@ export default function Contact() {
       <Head>
         <title>Contact - Gym Portal</title>
       </Head>
-      <Box className="bg-gray-100 py-10 px-4 border-2 border-black rounded-2xl mx-40">
+      <Box className="bg-gray-100 py-10 px-4 border-2 border-black rounded-2xl mx-40 shadow-lg">
         <Container maxWidth="md">
           <Typography variant="h3" component="h1" className="mb-8">
             Contact Us
@@ -32,13 +32,13 @@ export default function Contact() {
                   label="Name"
                   variant="outlined"
                   fullWidth
-                  className="bg-white rounded-lg"
+                  className="bg-white rounded-lg shadow-sm"
                 />
                 <TextField
                   label="Email"
                   variant="outlined"
                   fullWidth
-                  className="bg-white rounded-lg"
+                  className="bg-white rounded-lg shadow-sm"
                 />
                 <TextField
                   label="Message"
@@ -46,7 +46,7 @@ export default function Contact() {
                   fullWidth
                   multiline
                   rows={4}
-                  className="bg-white rounded-lg"
+                  className="bg-white rounded-lg shadow-sm"
                 />
                 <Button
                   type="submit"
