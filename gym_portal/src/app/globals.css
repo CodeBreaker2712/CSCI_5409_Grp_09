@@ -2,3 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 5px;
+    background-color: #007bff; /* Choose your desired progress bar color */
+    z-index: 1000; /* Ensure the progress bar is above other content */
+    transition: width 0.3s ease; /* Add a smooth transition effect */
+}

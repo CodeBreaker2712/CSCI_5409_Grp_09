@@ -1,5 +1,4 @@
 // pages/contact.js
- 
 import Head from "next/head";
 import {
   Container,
@@ -10,23 +9,36 @@ import {
   Grid,
 } from "@mui/material";
 import { Phone, Email, LocationOn } from "@mui/icons-material";
- 
+import gymImage from "../../../public/bg.png";
+
 export default function Contact() {
   return (
-    <div>
+    <div
+      style={{
+        backgroundImage: { gymImage },
+        backgroundSize: "cover",
+        minHeight: "100vh",
+      }}
+    >
       <Head>
-        <title>Contact - Gym Portal</title>
+        <title>Contact - FlexiGym</title>
       </Head>
       <Box
-        className="bg-white py-10 px-4 mx-auto shadow-lg rounded-3xl"
-        style={{ maxWidth: "800px" }}
+        className="bg-white py-10 px-4 mx-auto rounded-3xl"
+        style={{
+          maxWidth: "800px",
+          boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.1)",
+          backdropFilter: "blur(20px)",
+          borderRadius: "20px",
+          backgroundColor: "rgba(255, 255, 255, 0.8)",
+        }}
       >
         <Container maxWidth="md">
           <Typography
             variant="h3"
             component="h1"
             className="mb-8"
-            style={{ fontWeight: "bold" }}
+            style={{ fontWeight: "bold", textAlign: "center" }}
           >
             Contact Us
           </Typography>
@@ -72,12 +84,10 @@ export default function Contact() {
             </Grid>
             <Grid item xs={12} md={6}>
               <Typography variant="body1" className="mb-4">
-                Our members are important to us at Gym Portal, and we are
-                committed to the satisfaction of gym enthusiasts and gym owners.
-                We work hard on our communication with you, incredibly well
-                giving even more value for our service. Thus your opinions
-                enable us improve on an ongoing basis until we finally surpass
-                all expectations.
+                Our members are important to us at FlexiGym, and we are
+                committed to the satisfaction of fitness enthusiasts and gym
+                owners. We value your feedback as it helps us improve and
+                provide better services to meet your expectations.
               </Typography>
               <Typography
                 variant="h5"
@@ -92,7 +102,7 @@ export default function Contact() {
               </Box>
               <Box className="flex items-center mb-4">
                 <Email className="mr-2 text-gray-600" />
-                <Typography variant="body1">info@gymportal.com</Typography>
+                <Typography variant="body1">info@flexigym.com</Typography>
               </Box>
               <Box className="flex items-center mb-4">
                 <LocationOn className="mr-2 text-gray-600" />
