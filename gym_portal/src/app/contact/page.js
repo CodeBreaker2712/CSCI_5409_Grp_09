@@ -17,14 +17,26 @@ export default function Contact() {
       <Head>
         <title>Contact - Gym Portal</title>
       </Head>
-      <Box className="bg-gray-100 py-10 px-4 border-2 border-black rounded-2xl mx-40 shadow-lg">
+      <Box
+        className="bg-white py-10 px-4 mx-auto shadow-lg rounded-3xl"
+        style={{ maxWidth: "800px" }}
+      >
         <Container maxWidth="md">
-          <Typography variant="h3" component="h1" className="mb-8">
+          <Typography
+            variant="h3"
+            component="h1"
+            className="mb-8"
+            style={{ fontWeight: "bold" }}
+          >
             Contact Us
           </Typography>
           <Grid container spacing={4}>
             <Grid item xs={12} md={6}>
-              <Typography variant="h5" className="mb-4">
+              <Typography
+                variant="h5"
+                className="mb-4"
+                style={{ fontWeight: "bold" }}
+              >
                 Get in Touch
               </Typography>
               <form className="space-y-6">
@@ -32,13 +44,13 @@ export default function Contact() {
                   label="Name"
                   variant="outlined"
                   fullWidth
-                  className="bg-white rounded-lg shadow-sm"
+                  className="bg-white rounded-lg shadow-md"
                 />
                 <TextField
                   label="Email"
                   variant="outlined"
                   fullWidth
-                  className="bg-white rounded-lg shadow-sm"
+                  className="bg-white rounded-lg shadow-md"
                 />
                 <TextField
                   label="Message"
@@ -46,7 +58,7 @@ export default function Contact() {
                   fullWidth
                   multiline
                   rows={4}
-                  className="bg-white rounded-lg shadow-sm"
+                  className="bg-white rounded-lg shadow-md"
                 />
                 <Button
                   type="submit"
@@ -59,15 +71,19 @@ export default function Contact() {
               </form>
             </Grid>
             <Grid item xs={12} md={6}>
-              <Typography variant="p" className="mb-4">
-                Our members are important to us at FlexiGym, and we are
-                committed to satisfaction of gym enthusiasts and gym owners. We
-                work hard on our communication with you, incredibly well giving
-                even more value for our service. Thus your opinions enable us
-                improve on an ongoing basis until we finally surpass all
-                expectations.
+              <Typography variant="body1" className="mb-4">
+                Our members are important to us at Gym Portal, and we are
+                committed to the satisfaction of gym enthusiasts and gym owners.
+                We work hard on our communication with you, incredibly well
+                giving even more value for our service. Thus your opinions
+                enable us improve on an ongoing basis until we finally surpass
+                all expectations.
               </Typography>
-              <Typography variant="h5" className="mt-8 mb-4">
+              <Typography
+                variant="h5"
+                className="mt-8 mb-4"
+                style={{ fontWeight: "bold" }}
+              >
                 Contact Information
               </Typography>
               <Box className="flex items-center mb-4">
