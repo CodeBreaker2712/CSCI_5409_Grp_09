@@ -2,7 +2,7 @@
 
 - _Date Created_: 15 Jun, 2024
 - _Last Modification Date_: 25 Jun, 2024
-- _[Lab URL](https://raj-chauhan--proposalfrontend.netlify.app/)_
+- _[Lab URL](https://flexigym-v2.vercel.app/)_
 - _[Git URL](https://git.cs.dal.ca/jjani/csci_5709_grp-09)_
 
 ## Authors
@@ -50,7 +50,7 @@
 
 ## Prototype URL:
 
-[Prototype](https://raj-chauhan--proposalfrontend.netlify.app/)
+[Prototype](https://flexigym-v2.vercel.app/)
 
 ## Note
 
