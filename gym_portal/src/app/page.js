@@ -1,35 +1,60 @@
-// pages/index.js
-
-import Head from 'next/head';
-import Link from 'next/link';
-import { SearchIcon } from '@heroicons/react/outline';
+"use client";
+import Head from "next/head";
+import Link from "next/link";
+import { Container, Typography, Button, Grid } from "@mui/material";
+import AboutComponent from "../components/aboutComponent";
+import AmenitiesComponent from "../components/amenitiesComponent";
+import MembershipComponent from "../components/membershipComponenet";
+import NavigationPanel from "../components/navigationPanel";
+import Image from 'next/image';
+import gymImage from '../../public/heroImage.jpeg';
+// import { Search } from '@mui/icons-material';
 
 export default function Home() {
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center min-h-screen">
       <Head>
-        <title>Gym Portal</title>
+        <title>FlexiGym</title>
       </Head>
-      <div className="bg-gray-100 py-20 px-4 text-center">
-        <div className="max-w-3xl mx-auto">
-          <h1 className="text-5xl font-bold mb-8">Welcome to Gym Portal</h1>
-          <p className="text-xl mb-12">Find the perfect gym for your fitness journey!</p>
-          <div className="flex justify-center items-center bg-white rounded-lg shadow-lg p-4 mb-12">
-            <input type="text" placeholder="Search for gyms..." className="w-full bg-transparent border-none focus:outline-none" />
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 ml-4 rounded focus:outline-none focus:shadow-outline">
-              <SearchIcon className="h-5 w-5" />
-            </button>
+      <NavigationPanel />
+
+      <Container maxWidth="lg" className="py-12 text-center">
+        <div className="min-h-screen flex justify-center items-center">
+
+          <div>
+          <Typography variant="h3" component="h1" gutterBottom>
+            Welcome to FlexiGym
+          </Typography>
+          <Typography variant="subtitle1" component="p" gutterBottom>
+            Find the perfect gym for your fitness journey!
+          </Typography>
+          <Grid container justifyContent="center" className="mt-8">
+            <Grid item xs={12} sm={6} md={4} lg={3}>
+              <Link href="/faq" passHref>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  size="small"
+                  fullWidth
+                >
+                  Learn More
+                </Button>
+              </Link>
+            </Grid>
+          </Grid>
           </div>
-          <div className="flex justify-center">
-            <Link href="/faq" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded mr-4">
-              FAQ
-            </Link>
-            <Link className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded"href="/contact">
-              Contact Us
-            </Link>
-          </div>
+          {/* <Image
+              src={gymImage}
+              alt="Gym Image"
+              objectFit="cover"
+              className="rounded-lg"
+            /> */}
         </div>
-      </div>
+        <AboutComponent />
+
+        <MembershipComponent />
+        <AmenitiesComponent />
+      </Container>
     </div>
   );
 }
