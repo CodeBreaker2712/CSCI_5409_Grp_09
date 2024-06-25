@@ -1,6 +1,15 @@
 // pages/contact.js
 
-import Head from 'next/head';
+import Head from "next/head";
+import {
+  Container,
+  Typography,
+  Box,
+  TextField,
+  Button,
+  Grid,
+} from "@mui/material";
+import { Phone, Email, LocationOn } from "@mui/icons-material";
 
 export default function Contact() {
   return (
@@ -8,32 +17,77 @@ export default function Contact() {
       <Head>
         <title>Contact - Gym Portal</title>
       </Head>
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-4">Contact Us</h1>
-        <p className="mb-4">For any inquiries or questions, please fill out the form below:</p>
-        <form className="w-full max-w-lg">
-          <div className="flex flex-wrap -mx-3 mb-6">
-            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-first-name">
-                First Name
-              </label>
-              <input className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="John" />
-            </div>
-            <div className="w-full md:w-1/2 px-3">
-              <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-last-name">
-                Last Name
-              </label>
-              <input className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-last-name" type="text" placeholder="Doe" />
-            </div>
-          </div>
-          {/* Add more form fields as needed */}
-          <div className="flex items-center justify-between">
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-              Submit
-            </button>
-          </div>
-        </form>
-      </div>
+      <Box className="bg-gray-100 py-10 px-4 border-2 border-black rounded-2xl mx-40">
+        <Container maxWidth="md">
+          <Typography variant="h3" component="h1" className="mb-8">
+            Contact Us
+          </Typography>
+          <Grid container spacing={4}>
+            <Grid item xs={12} md={6}>
+              <Typography variant="h5" className="mb-4">
+                Get in Touch
+              </Typography>
+              <form className="space-y-6">
+                <TextField
+                  label="Name"
+                  variant="outlined"
+                  fullWidth
+                  className="bg-white rounded-lg"
+                />
+                <TextField
+                  label="Email"
+                  variant="outlined"
+                  fullWidth
+                  className="bg-white rounded-lg"
+                />
+                <TextField
+                  label="Message"
+                  variant="outlined"
+                  fullWidth
+                  multiline
+                  rows={4}
+                  className="bg-white rounded-lg"
+                />
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  className="mt-4"
+                >
+                  Send Message
+                </Button>
+              </form>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Typography variant="p" className="mb-4">
+                Our members are important to us at FlexiGym, and we are
+                committed to satisfaction of gym enthusiasts and gym owners. We
+                work hard on our communication with you, incredibly well giving
+                even more value for our service. Thus your opinions enable us
+                improve on an ongoing basis until we finally surpass all
+                expectations.
+              </Typography>
+              <Typography variant="h5" className="mt-8 mb-4">
+                Contact Information
+              </Typography>
+              <Box className="flex items-center mb-4">
+                <Phone className="mr-2 text-gray-600" />
+                <Typography variant="body1">+1 234 567 890</Typography>
+              </Box>
+              <Box className="flex items-center mb-4">
+                <Email className="mr-2 text-gray-600" />
+                <Typography variant="body1">info@gymportal.com</Typography>
+              </Box>
+              <Box className="flex items-center mb-4">
+                <LocationOn className="mr-2 text-gray-600" />
+                <Typography variant="body1">
+                  123 Gym Street, Fitness City, USA
+                </Typography>
+              </Box>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
     </div>
   );
 }
