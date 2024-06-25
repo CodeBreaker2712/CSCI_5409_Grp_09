@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const NavigationPanel = () => {
   return (
-    <AppBar position="static" color="primary">
+    <AppBar position="static" color="primary" className="mb-8">
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           FlexiGym

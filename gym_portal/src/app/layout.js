@@ -1,10 +1,16 @@
-import Link from 'next/link';
-import './globals.css';
+import Link from "next/link";
+import "./globals.css";
+import NavigationPanel from "../components/navigationPanel";
+
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {" "}
+        <NavigationPanel />
+        {children}
+      </body>
     </html>
-  )
+  );
 }

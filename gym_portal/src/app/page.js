@@ -16,9 +16,8 @@ export default function Home() {
       <Head>
         <title>FlexiGym</title>
       </Head>
-      <NavigationPanel />
 
-      <Container maxWidth="lg" className="py-12 text-center">
+      <Container maxWidth="lg" className=" text-center">
         <div className="min-h-screen flex justify-center items-center">
 
           <div>
