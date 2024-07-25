@@ -1,10 +1,9 @@
-import { Button } from "@mui/material";
+import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-between p-4">
-      The application will come here.
-      
+    <main className="flex min-h-screen flex-col items-center justify-between p-4">
+      Homepage
     </main>
   );
 }
