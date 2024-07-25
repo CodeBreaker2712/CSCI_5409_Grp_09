@@ -10,7 +10,7 @@ export default function NavBar() {
   return (
     <header className="flex items-center justify-between h-16 px-4 md:px-6 border-b">
       <div className="flex items-center gap-2">
-        <Link href="#" prefetch={false}>
+        <Link href="/" prefetch={false}>
           <Logo />
         </Link>
       </div>

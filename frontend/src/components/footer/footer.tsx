@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="bg-primary text-primary-foreground py-12 md:py-20">
       <div className="container mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
         <div className="flex flex-col items-start gap-4 md:gap-6">
-          <Link href="#" className="flex items-center gap-2" prefetch={false}>
+          <Link href="/" className="flex items-center gap-2" prefetch={false}>
             <DumbbellIcon className="w-8 h-8" />
             <span className="text-2xl font-bold">FlexiGym</span>
           </Link>
