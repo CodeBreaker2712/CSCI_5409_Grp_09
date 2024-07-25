@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Roboto as FontSans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import NavBar from "@/components/navbar/navbar";
+import Footer from "@/components/footer/footer";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -27,7 +29,9 @@ export default function RootLayout({
           fontSans.variable,
         )}
       >
+        <NavBar />
         {children}
+        <Footer />
       </body>
     </html>
   );
