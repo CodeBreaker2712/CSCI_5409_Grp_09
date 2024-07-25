@@ -34,7 +34,11 @@ export function ProfileDropdown() {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <Link href="#" className="flex items-center gap-2" prefetch={false}>
+          <Link
+            href="/profile"
+            className="flex items-center gap-2"
+            prefetch={false}
+          >
             <UserIcon className="w-4 h-4" />
             Profile
           </Link>

@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/accordion";
 import { FAQ_CONTENT } from "@/lib/constants";
 
-export default function Component() {
+export default function FAQPage() {
   return (
     <div className="w-full max-w-3xl mx-auto py-12 md:py-20">
       <div className="space-y-8">

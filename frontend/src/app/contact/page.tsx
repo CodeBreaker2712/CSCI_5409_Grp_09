@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { MailOpenIcon, MapPinIcon, PhoneIcon } from "lucide-react";
 
-export default function Component() {
+export default function ContactPage() {
   return (
     <div className="w-full max-w-6xl mx-auto p-6 md:p-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
