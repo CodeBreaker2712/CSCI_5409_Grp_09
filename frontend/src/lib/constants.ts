@@ -17,7 +17,7 @@ export const FOOTER_LINKS: Array<LinkType> = [
   },
   {
     name: "Contact us",
-    ref: "#",
+    ref: "/contact",
   },
   {
     name: "FAQ",
