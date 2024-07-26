@@ -5,6 +5,7 @@ import Logo from "../logo/logo";
 import { Search } from "lucide-react";
 import { Input } from "../ui/input";
 import { ProfileDropdown } from "../profile-dropdown/profile-dropdown";
+import { ThemeToggler } from "../theme-toggler";
 
 export default function NavBar() {
   return (
@@ -36,7 +37,10 @@ export default function NavBar() {
             />
           </div>
         </form>
-        <ProfileDropdown />
+        <div className="flex gap-2">
+          <ProfileDropdown />
+          <ThemeToggler />
+        </div>
       </div>
     </header>
   );

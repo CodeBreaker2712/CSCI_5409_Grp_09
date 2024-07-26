@@ -8,13 +8,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import {
-  CalendarIcon,
-  CreditCardIcon,
-  LogOutIcon,
-  UserIcon,
-} from "lucide-react";
+import { CalendarIcon, CreditCardIcon, UserIcon } from "lucide-react";
 import ProfileAvatar from "./profile-avatar";
+import { LogoutConfirmationDialogLink } from "../logout/logout-confirmation-dialog-link";
 
 export function ProfileDropdown() {
   return (
@@ -57,10 +53,7 @@ export function ProfileDropdown() {
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <Link href="#" className="flex items-center gap-2" prefetch={false}>
-            <LogOutIcon className="w-4 h-4" />
-            Logout
-          </Link>
+          <LogoutConfirmationDialogLink />
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
