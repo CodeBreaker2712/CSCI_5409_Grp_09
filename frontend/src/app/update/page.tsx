@@ -73,7 +73,7 @@ export default function Component() {
               <PopoverTrigger asChild>
                 <Button variant="outline" className="w-full">
                   <CalendarIcon className="w-4 h-4 mr-2" />
-                  Reschedule
+                  Pick a date
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="p-0 max-w-[276px]">
