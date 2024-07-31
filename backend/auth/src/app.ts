@@ -6,7 +6,6 @@ import {connectDB} from './config/database';
 
 
 import gymRouter from './routes/gyms';
-import reviewsRouter from './routes/reviews';
 
 import { PaymentController } from "./controllers/PaymentController";
 import { BookingRepository } from "./repositories/BookingRepository";
@@ -19,7 +18,7 @@ connectDB();
 
 const app = express();
 
-// Middlewares
+// Middleware
 app.use(
   cors({
     origin: process.env.FRONTEND_URL || "http://localhost:3000",
@@ -33,7 +32,7 @@ app.use(express.json());
 // Connect to database
 // connectDB();
 
-// Dependency injectio
+// Dependency injection
 const stripeService = new StripeService(process.env.STRIPE_SECRET_KEY!);
 const bookingRepository = new BookingRepository();
 const paymentController = new PaymentController(
@@ -43,9 +42,8 @@ const paymentController = new PaymentController(
 
 // Routes (to be added later)
 app.use("/api/bookings", bookingsRouter);
-app.use('/api/gyms', gymRouter);
+// app.use('/api/gyms', gymRouter);
 app.post("/api/create-payment-intent", paymentController.createPaymentIntent);
-app.use("/api/reviews", reviewsRouter);
 
 const PORT = process.env.PORT || 8080;
 
