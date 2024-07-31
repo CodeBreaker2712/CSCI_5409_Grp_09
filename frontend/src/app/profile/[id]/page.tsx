@@ -281,16 +281,16 @@ export default function ProfilePage() {
           </header>
           <div className="bg-background p-6 rounded-b-lg space-y-6">
             {profileData?._id === loggedInUser?.id  &&  (
-              <section>
-              <h2 className="text-lg font-semibold">Contact Information</h2>
-              <div className="grid gap-4 mt-2">
-                <div className="grid gap-1">
-                <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" readOnly={true} value={profileData?.email} className="bg-gray-100 border border-gray-300 text-gray-600"/>
-                </div>
-              </div>
-              </section>
-              )}
+                <section>
+                  <h2 className="text-lg font-semibold">Contact Information</h2>
+                  <div className="grid gap-4 mt-2">
+                    <div className="grid gap-1">
+                      <Label htmlFor="email">Email</Label>
+                      <Input id="email" type="email" readOnly={true} value={profileData?.email} className="bg-gray-100 border border-gray-300 text-gray-600"/>
+                    </div>
+                  </div>
+                </section>
+            )}
             <section>
               <h2 className="text-lg font-semibold">{profileData?.type === 'gym' ? 'Gym Details' : 'User Details'}</h2>
               {profileData?.type === 'gym' ? (
@@ -305,24 +305,24 @@ export default function ProfilePage() {
                     </div>
                   </div>
               ): (
-                <div className="grid gap-4 mt-2">
-                  <div className="grid gap-1">
-                    <Label htmlFor="firstname">First Name</Label>
-                    <Input id="firstname" value={updateData.firstName} readOnly={profileData?._id !== loggedInUser?.id}
-                           className={`border border-gray-300 text-gray-600 ${
-                               profileData?._id !== loggedInUser?.id ? 'bg-gray-100' : ''
-                           }`}
-                           onChange={(e) => setUpdateData((prev) => ({ ...prev, firstName: e.target.value }))}/>
+                  <div className="grid gap-4 mt-2">
+                    <div className="grid gap-1">
+                      <Label htmlFor="firstname">First Name</Label>
+                      <Input id="firstname" value={updateData.firstName} readOnly={profileData?._id !== loggedInUser?.id}
+                             className={`border border-gray-300 text-gray-600 ${
+                                 profileData?._id !== loggedInUser?.id ? 'bg-gray-100' : ''
+                             }`}
+                             onChange={(e) => setUpdateData((prev) => ({ ...prev, firstName: e.target.value }))}/>
+                    </div>
+                    <div className="grid gap-1">
+                      <Label htmlFor="lastname">Last Name</Label>
+                      <Input id="lastname" value={updateData.lastName} readOnly={profileData?._id !== loggedInUser?.id}
+                             className={`border border-gray-300 text-gray-600 ${
+                                 profileData?._id !== loggedInUser?.id ? 'bg-gray-100' : ''
+                             }`}
+                             onChange={(e) => setUpdateData((prev) => ({ ...prev, lastName: e.target.value }))}/>
+                    </div>
                   </div>
-                  <div className="grid gap-1">
-                    <Label htmlFor="lastname">Last Name</Label>
-                    <Input id="lastname" value={updateData.lastName} readOnly={profileData?._id !== loggedInUser?.id}
-                           className={`border border-gray-300 text-gray-600 ${
-                               profileData?._id !== loggedInUser?.id ? 'bg-gray-100' : ''
-                           }`}
-                           onChange={(e) => setUpdateData((prev) => ({ ...prev, lastName: e.target.value }))}/>
-                  </div>
-                </div>
               )}
             </section>
             {profileData?.type === 'gym' && (
