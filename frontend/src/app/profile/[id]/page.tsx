@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import ProtectedRoute from '../../../../Auth/ProtectedRoutes';
 import { AuthContext } from '../../../../Auth/AuthContext';
-import {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {getProfileData,getAccessToken} from "../../../../Auth/AuthService";
 import {getGymInitials, getInitialsFromUser} from "@/lib/utils";
 import {useParams, useRouter} from 'next/navigation';
@@ -124,6 +124,9 @@ export default function ProfilePage() {
       country: ''
     }
   });
+  const [updateMessage, setUpdateMessage] = useState<string | null>(null);
+  const [passwordMessage, setPasswordMessage] = useState<string | null>(null);
+  const [deleteMessage, setDeleteMessage] = useState<string | null>(null);
   const userProfile = getProfileData();
   const strongPasswordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$/;
   const {signout} = context;
@@ -211,30 +214,46 @@ export default function ProfilePage() {
       setProfileData({ ...profileData, ...updateData });
       setNewPassword('');
       setConfirmPassword('');
+      // @ts-ignore
+      const hasChanges = Object.keys(updateData).some(key => updateData[key] !== (profileData as any)[key]);
+
+      if(hasChanges){
+        setUpdateMessage('Profile has been updated');
+      }
+      if (newPassword) {
+        setPasswordMessage('Password changed successfully.');
+      }
+      setTimeout(() => setPasswordMessage(null), 5000);
+      setTimeout(() => setUpdateMessage(null), 5000);
     } catch (error) {
       console.error('Error updating profile:', error);
       setError('Failed to update profile.');
     }
   };
 
+  const sleep = (ms: number) => {
+    return new Promise<void>(resolve => setTimeout(resolve, ms));
+  };
+
   const handleDelete = async () => {
     if (!profileData?._id) return;
+    try {
+      // @ts-ignore
+      await deleteProfile(profileData._id, token);
 
-    if (confirm('Are you sure you want to delete your profile?')) {
       try {
-        // @ts-ignore
-        await deleteProfile(profileData._id, token);
 
-        try {
-          await signout();
-          router.push('/login');
-        } catch (error) {
-          console.error("Logout failed:", error);
-        }
+        setDeleteMessage("Deleting Profile in 3 sec.");
+        await sleep(3000);
+        await signout();
+        router.push('/login');
+
       } catch (error) {
-        console.error('Error deleting profile:', error);
-        setError('Failed to delete profile.');
+        console.error("Logout failed:", error);
       }
+    } catch (error) {
+      console.error('Error deleting profile:', error);
+      setError('Failed to delete profile.');
     }
   };
 
@@ -278,7 +297,10 @@ export default function ProfilePage() {
                   <div className="grid gap-4 mt-2">
                     <div className="grid gap-1">
                       <Label htmlFor="gymname">Gym Name</Label>
-                      <Input id="gymname" type="text" value={updateData.gymName}
+                      <Input id="gymname" type="text" value={updateData.gymName} readOnly={profileData?._id !== loggedInUser?.id}
+                             className={`border border-gray-300 text-gray-600 ${
+                                 profileData?._id !== loggedInUser?.id ? 'bg-gray-100' : ''
+                             }`}
                              onChange={(e) => setUpdateData((prev) => ({ ...prev, gymName: e.target.value }))}/>
                     </div>
                   </div>
@@ -286,12 +308,18 @@ export default function ProfilePage() {
                 <div className="grid gap-4 mt-2">
                   <div className="grid gap-1">
                     <Label htmlFor="firstname">First Name</Label>
-                    <Input id="firstname" value={updateData.firstName}
+                    <Input id="firstname" value={updateData.firstName} readOnly={profileData?._id !== loggedInUser?.id}
+                           className={`border border-gray-300 text-gray-600 ${
+                               profileData?._id !== loggedInUser?.id ? 'bg-gray-100' : ''
+                           }`}
                            onChange={(e) => setUpdateData((prev) => ({ ...prev, firstName: e.target.value }))}/>
                   </div>
                   <div className="grid gap-1">
                     <Label htmlFor="lastname">Last Name</Label>
-                    <Input id="lastname" value={updateData.lastName}
+                    <Input id="lastname" value={updateData.lastName} readOnly={profileData?._id !== loggedInUser?.id}
+                           className={`border border-gray-300 text-gray-600 ${
+                               profileData?._id !== loggedInUser?.id ? 'bg-gray-100' : ''
+                           }`}
                            onChange={(e) => setUpdateData((prev) => ({ ...prev, lastName: e.target.value }))}/>
                   </div>
                 </div>
@@ -303,7 +331,10 @@ export default function ProfilePage() {
                   <div className="grid gap-4 mt-2 grid-cols-2">
                     <div className="grid gap-1">
                       <Label htmlFor="street">Street</Label>
-                      <Input id="street" value={updateData.address?.street || ''}
+                      <Input id="street" value={updateData.address?.street || ''} readOnly={profileData?._id !== loggedInUser?.id}
+                             className={`border border-gray-300 text-gray-600 ${
+                                 profileData?._id !== loggedInUser?.id ? 'bg-gray-100' : ''
+                             }`}
                              onChange={(e) =>
                                  setUpdateData((prev) => ({
                                    ...prev,
@@ -313,7 +344,10 @@ export default function ProfilePage() {
                     </div>
                     <div className="grid gap-1">
                       <Label htmlFor="city">City</Label>
-                      <Input id="city" value={updateData.address?.city || ''}
+                      <Input id="city" value={updateData.address?.city || ''} readOnly={profileData?._id !== loggedInUser?.id}
+                             className={`border border-gray-300 text-gray-600 ${
+                                 profileData?._id !== loggedInUser?.id ? 'bg-gray-100' : ''
+                             }`}
                              onChange={(e) =>
                                  setUpdateData((prev) => ({
                                    ...prev,
@@ -323,7 +357,10 @@ export default function ProfilePage() {
                     </div>
                     <div className="grid gap-1">
                       <Label htmlFor="province">Province</Label>
-                      <Input id="province" value={updateData.address?.province || ''}
+                      <Input id="province" value={updateData.address?.province || ''} readOnly={profileData?._id !== loggedInUser?.id}
+                             className={`border border-gray-300 text-gray-600 ${
+                                 profileData?._id !== loggedInUser?.id ? 'bg-gray-100' : ''
+                             }`}
                              onChange={(e) =>
                                  setUpdateData((prev) => ({
                                    ...prev,
@@ -333,7 +370,10 @@ export default function ProfilePage() {
                     </div>
                     <div className="grid gap-1">
                       <Label htmlFor="country">Country</Label>
-                      <Input id="country" value={updateData.address?.country || ''}
+                      <Input id="country" value={updateData.address?.country || ''} readOnly={profileData?._id !== loggedInUser?.id}
+                             className={`border border-gray-300 text-gray-600 ${
+                                 profileData?._id !== loggedInUser?.id ? 'bg-gray-100' : ''
+                             }`}
                              onChange={(e) =>
                                  setUpdateData((prev) => ({
                                    ...prev,
@@ -361,8 +401,13 @@ export default function ProfilePage() {
                   </div>
                 </section>
             )}
-
+            {profileData?._id !== loggedInUser?.id && (
+                <p className="text-gray-600">You can view only</p>
+            )}
+            {updateMessage && <p className="text-green-500 mt-2">{updateMessage}</p>}
+            {passwordMessage && <p className="text-green-500 mt-2">{passwordMessage}</p>}
             {error && <p className="text-red-500">{error}</p>}
+            {deleteMessage && <p className="text-red-500">{deleteMessage}</p>}
 
             <Separator/>
             {profileData?._id === loggedInUser?.id  && (
