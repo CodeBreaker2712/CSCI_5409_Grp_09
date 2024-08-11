@@ -6,10 +6,10 @@ import Logo from "../logo/logo";
 import { ProfileDropdown } from "../profile-dropdown/profile-dropdown";
 import { ThemeToggler } from "../theme-toggler";
 import { AuthContext } from "../../../Auth/AuthContext";
-import { getProfileData } from '../../../Auth/AuthService'
 import React, { useContext, useEffect, useState } from "react";
 import MobileNav from "./mobile-nav";
 import { useRouter } from "next/navigation";
+import {jwtDecode} from "jwt-decode";
 
 interface LoggedInUser {
   firstName?: string;
@@ -30,6 +30,7 @@ export default function NavBar() {
         const token = localStorage.getItem('accessToken');
         // @ts-ignore
         const userProfile = jwtDecode(token);
+
         if (userProfile) {
           // @ts-ignore
           setLoggedInUser(userProfile);
@@ -42,7 +43,7 @@ export default function NavBar() {
     loadProfileData();
   }, [context]);
 
-  const handleClick = (e) => {
+  const handleClick = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
 
     if (loggedInUser?.type === 'user') {
