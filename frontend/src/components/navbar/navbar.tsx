@@ -30,7 +30,7 @@ export default function NavBar() {
         const token = localStorage.getItem('accessToken');
         // @ts-ignore
         const userProfile = jwtDecode(token);
-        console.log(userProfile);
+
         if (userProfile) {
           // @ts-ignore
           setLoggedInUser(userProfile);
